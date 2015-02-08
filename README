@@ -1,0 +1,17 @@
+export PATH=~/Your_Toolchain_PATH/ 
+for_example  /alps/prebuilt/linux-x86/toolchain/arm-linux-androideabi-4.4.x/bin:$PATH
+
+Buile command:
+
+uboot
+=====
+cd <uboot path>
+TARGET_PRODUCT=jrdsh15_td_ics make jrdsh15_td_ics_config
+TARGET_PRODUCT=jrdsh15_td_ics make
+
+
+kernel
+======
+cd <kernel path>
+cp mediatek-configs .config
+TARGET_PRODUCT=jrdsh15_td_ics MTK_ROOT_CUSTOM=../mediatek/custom make

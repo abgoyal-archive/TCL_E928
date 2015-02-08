@@ -1,0 +1,5 @@
+sinclude $(OBJTREE)/board/$(BOARDDIR)/config.tmp
+
+TEXT_BASE = 0xFF000000
+
+PLATFORM_CPPFLAGS += -DTEXT_BASE=$(TEXT_BASE) -I$(TOPDIR)/board

@@ -1,0 +1,2 @@
+TEXT_BASE = 0x00f00000
+#CROSS_COMPILE = arm-elf-

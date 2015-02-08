@@ -1,0 +1,124 @@
+
+#ifndef __CONFIG_H
+#define __CONFIG_H
+
+#include <asm/arch/memory-map.h>
+
+#define CONFIG_AVR32			1
+#define CONFIG_AT32AP			1
+#define CONFIG_AT32AP7001		1
+#define CONFIG_ATSTK1003		1
+#define CONFIG_ATSTK1000		1
+
+#define CONFIG_ATSTK1000_EXT_FLASH	1
+
+#define CONFIG_SYS_HZ				1000
+
+#define CONFIG_PLL			1
+#define CONFIG_SYS_POWER_MANAGER		1
+#define CONFIG_SYS_OSC0_HZ			20000000
+#define CONFIG_SYS_PLL0_DIV			1
+#define CONFIG_SYS_PLL0_MUL			7
+#define CONFIG_SYS_PLL0_SUPPRESS_CYCLES	16
+#define CONFIG_SYS_CLKDIV_CPU			0
+#define CONFIG_SYS_CLKDIV_HSB			1
+#define CONFIG_SYS_CLKDIV_PBA			2
+#define CONFIG_SYS_CLKDIV_PBB			1
+
+#define CONFIG_SYS_PLL0_OPT			0x04
+
+#undef CONFIG_USART0
+#define CONFIG_USART1			1
+#undef CONFIG_USART2
+#undef CONFIG_USART3
+
+/* User serviceable stuff */
+#define CONFIG_DOS_PARTITION		1
+
+#define CONFIG_CMDLINE_TAG		1
+#define CONFIG_SETUP_MEMORY_TAGS	1
+#define CONFIG_INITRD_TAG		1
+
+#define CONFIG_STACKSIZE		(2048)
+
+#define CONFIG_BAUDRATE			115200
+#define CONFIG_BOOTARGS							\
+	"console=ttyS0 root=/dev/mmcblk0p1 rootwait"
+
+#define CONFIG_BOOTCOMMAND						\
+	"mmcinit; ext2load mmc 0:1 0x10400000 /boot/uImage; bootm"
+
+#define CONFIG_BOOTDELAY		1
+#define CONFIG_AUTOBOOT			1
+#define CONFIG_AUTOBOOT_KEYED		1
+#define CONFIG_AUTOBOOT_PROMPT		\
+	"Press SPACE to abort autoboot in %d seconds\n", bootdelay
+#define CONFIG_AUTOBOOT_DELAY_STR	"d"
+#define CONFIG_AUTOBOOT_STOP_STR	" "
+
+#include <config_cmd_default.h>
+
+#define CONFIG_CMD_ASKENV
+#define CONFIG_CMD_EXT2
+#define CONFIG_CMD_FAT
+#define CONFIG_CMD_JFFS2
+#define CONFIG_CMD_MMC
+
+#undef CONFIG_CMD_FPGA
+#undef CONFIG_CMD_NET
+#undef CONFIG_CMD_NFS
+#undef CONFIG_CMD_SETGETDCR
+#undef CONFIG_CMD_XIMG
+
+#define CONFIG_ATMEL_USART		1
+#define CONFIG_PORTMUX_PIO		1
+#define CONFIG_SYS_HSDRAMC			1
+#define CONFIG_MMC			1
+#define CONFIG_ATMEL_MCI		1
+
+#define CONFIG_SYS_DCACHE_LINESZ		32
+#define CONFIG_SYS_ICACHE_LINESZ		32
+
+#define CONFIG_NR_DRAM_BANKS		1
+
+/* External flash on STK1000 */
+#if 0
+#define CONFIG_SYS_FLASH_CFI			1
+#define CONFIG_FLASH_CFI_DRIVER		1
+#endif
+
+#define CONFIG_SYS_FLASH_BASE			0x00000000
+#define CONFIG_SYS_FLASH_SIZE			0x800000
+#define CONFIG_SYS_MAX_FLASH_BANKS		1
+#define CONFIG_SYS_MAX_FLASH_SECT		135
+
+#define CONFIG_SYS_MONITOR_BASE		CONFIG_SYS_FLASH_BASE
+
+#define CONFIG_SYS_INTRAM_BASE			INTERNAL_SRAM_BASE
+#define CONFIG_SYS_INTRAM_SIZE			INTERNAL_SRAM_SIZE
+#define CONFIG_SYS_SDRAM_BASE			EBI_SDRAM_BASE
+
+#define CONFIG_ENV_IS_IN_FLASH		1
+#define CONFIG_ENV_SIZE			65536
+#define CONFIG_ENV_ADDR			(CONFIG_SYS_FLASH_BASE + CONFIG_SYS_FLASH_SIZE - CONFIG_ENV_SIZE)
+
+#define CONFIG_SYS_INIT_SP_ADDR		(CONFIG_SYS_INTRAM_BASE + CONFIG_SYS_INTRAM_SIZE)
+
+#define CONFIG_SYS_MALLOC_LEN			(256*1024)
+
+/* Allow 4MB for the kernel run-time image */
+#define CONFIG_SYS_LOAD_ADDR			(EBI_SDRAM_BASE + 0x00400000)
+#define CONFIG_SYS_BOOTPARAMS_LEN		(16 * 1024)
+
+/* Other configuration settings that shouldn't have to change all that often */
+#define CONFIG_SYS_PROMPT			"U-Boot> "
+#define CONFIG_SYS_CBSIZE			256
+#define CONFIG_SYS_MAXARGS			16
+#define CONFIG_SYS_PBSIZE			(CONFIG_SYS_CBSIZE + sizeof(CONFIG_SYS_PROMPT) + 16)
+#define CONFIG_SYS_LONGHELP			1
+
+#define CONFIG_SYS_MEMTEST_START		EBI_SDRAM_BASE
+#define CONFIG_SYS_MEMTEST_END			(CONFIG_SYS_MEMTEST_START + 0x700000)
+#define CONFIG_SYS_BAUDRATE_TABLE { 115200, 38400, 19200, 9600, 2400 }
+
+#endif /* __CONFIG_H */

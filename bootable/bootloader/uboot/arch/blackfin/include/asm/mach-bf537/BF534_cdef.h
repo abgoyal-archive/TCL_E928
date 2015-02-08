@@ -1,0 +1,11 @@
+
+
+#ifndef __BFIN_CDEF_ADSP_BF534_proc__
+#define __BFIN_CDEF_ADSP_BF534_proc__
+
+#include "../mach-common/ADSP-EDN-core_cdef.h"
+
+#include "ADSP-EDN-BF534-extended_cdef.h"
+
+
+#endif /* __BFIN_CDEF_ADSP_BF534_proc__ */

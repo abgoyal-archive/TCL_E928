@@ -1,0 +1,13 @@
+
+#ifndef __ASM_ARM_ARCH_MEMORYMAP_H__
+#define __ASM_ARM_ARCH_MEMORYMAP_H__
+
+#include <asm/arch/hardware.h>
+
+#define USART0_BASE AT91_USART0
+#define USART1_BASE AT91_USART1
+#define USART2_BASE AT91_USART2
+#define USART3_BASE (AT91_BASE_SYS + AT91_DBGU)
+#define SPI0_BASE	AT91_BASE_SPI
+
+#endif /* __ASM_ARM_ARCH_MEMORYMAP_H__ */

@@ -1,0 +1,191 @@
+
+#ifndef __doxygen_HIDE  /* This file is not part of the API */
+
+
+
+
+
+#define IX_ETHNPE_NPE_GETSTATUS                 0x00
+
+#define IX_ETHNPE_EDB_SETPORTADDRESS            0x01
+
+#define IX_ETHNPE_EDB_GETMACADDRESSDATABASE     0x02
+
+#define IX_ETHNPE_EDB_SETMACADDRESSSDATABASE    0x03
+
+#define IX_ETHNPE_GETSTATS                      0x04
+
+#define IX_ETHNPE_RESETSTATS                    0x05
+
+#define IX_ETHNPE_SETMAXFRAMELENGTHS            0x06
+
+#define IX_ETHNPE_VLAN_SETRXTAGMODE             0x07
+
+#define IX_ETHNPE_VLAN_SETDEFAULTRXVID          0x08
+
+#define IX_ETHNPE_VLAN_SETPORTVLANTABLEENTRY    0x09
+
+#define IX_ETHNPE_VLAN_SETPORTVLANTABLERANGE    0x0A
+
+#define IX_ETHNPE_VLAN_SETRXQOSENTRY            0x0B
+
+#define IX_ETHNPE_VLAN_SETPORTIDEXTRACTIONMODE  0x0C
+
+#define IX_ETHNPE_STP_SETBLOCKINGSTATE          0x0D
+
+#define IX_ETHNPE_FW_SETFIREWALLMODE            0x0E
+
+#define IX_ETHNPE_PC_SETFRAMECONTROLDURATIONID  0x0F
+
+#define IX_ETHNPE_PC_SETBBSID                   0x10
+
+#define IX_ETHNPE_PC_SETAPMACTABLE              0x11
+
+#define IX_ETHNPE_SETLOOPBACK_MODE              (0x12)
+
+
+#define IX_ETHNPE_NPE_GETSTATUS_ACK                 0x00
+
+#define IX_ETHNPE_EDB_SETPORTADDRESS_ACK            0x01
+
+#define IX_ETHNPE_EDB_GETMACADDRESSDATABASE_ACK     0x02
+
+#define IX_ETHNPE_EDB_SETMACADDRESSSDATABASE_ACK    0x03
+
+#define IX_ETHNPE_GETSTATS_ACK                      0x04
+
+#define IX_ETHNPE_RESETSTATS_ACK                    0x05
+
+#define IX_ETHNPE_SETMAXFRAMELENGTHS_ACK            0x06
+
+#define IX_ETHNPE_VLAN_SETRXTAGMODE_ACK             0x07
+
+#define IX_ETHNPE_VLAN_SETDEFAULTRXVID_ACK          0x08
+
+#define IX_ETHNPE_VLAN_SETPORTVLANTABLEENTRY_ACK    0x09
+
+#define IX_ETHNPE_VLAN_SETPORTVLANTABLERANGE_ACK    0x0A
+
+#define IX_ETHNPE_VLAN_SETRXQOSENTRY_ACK            0x0B
+
+#define IX_ETHNPE_VLAN_SETPORTIDEXTRACTIONMODE_ACK  0x0C
+
+#define IX_ETHNPE_STP_SETBLOCKINGSTATE_ACK          0x0D
+
+#define IX_ETHNPE_FW_SETFIREWALLMODE_ACK            0x0E
+
+#define IX_ETHNPE_PC_SETFRAMECONTROLDURATIONID_ACK  0x0F
+
+#define IX_ETHNPE_PC_SETBBSID_ACK                   0x10
+
+#define IX_ETHNPE_PC_SETAPMACTABLE_ACK              0x11
+
+#define IX_ETHNPE_SETLOOPBACK_MODE_ACK              (0x12)
+
+
+#define MASK(hi,lo)                    (((1 << (1 + ((hi) - (lo)))) - 1) << (lo))
+
+#define BITS(x,hi,lo)                  (((x) & MASK(hi,lo)) >> (lo))
+
+#define IX_ETHNPE_QM_Q_RXENET_LENGTH_MASK   0x3fff
+
+#define IX_ETHNPE_QM_Q_FIELD_FLAG_R             20
+
+#ifdef __vxworks
+#define IX_ETHNPE_QM_Q_FIELD_FLAG_MASK           0x30
+#else
+#define IX_ETHNPE_QM_Q_FIELD_FLAG_MASK           0x70
+#endif
+
+
+#define IX_ETHNPE_QM_Q_FIELD_NPEID_L            1
+
+#define IX_ETHNPE_QM_Q_FIELD_NPEID_R            0
+
+#define IX_ETHNPE_QM_Q_FIELD_PRIOR_L            2
+
+#define IX_ETHNPE_QM_Q_FIELD_PRIOR_R            0
+
+#define IX_ETHNPE_QM_Q_FIELD_ADDR_L             31
+
+#define IX_ETHNPE_QM_Q_FIELD_ADDR_R              5
+
+
+#define IX_ETHNPE_QM_Q_FREEENET_ADDR_MASK \
+            MASK (IX_ETHNPE_QM_Q_FIELD_ADDR_L, \
+                  IX_ETHNPE_QM_Q_FIELD_ADDR_R)
+
+#define IX_ETHNPE_QM_Q_RXENET_NPEID_MASK \
+            MASK (IX_ETHNPE_QM_Q_FIELD_NPEID_L, \
+                  IX_ETHNPE_QM_Q_FIELD_NPEID_R)
+
+#define IX_ETHNPE_QM_Q_RXENET_ADDR_MASK \
+            MASK (IX_ETHNPE_QM_Q_FIELD_ADDR_L, \
+                  IX_ETHNPE_QM_Q_FIELD_ADDR_R)
+
+#define IX_ETHNPE_QM_Q_TXENET_PRIOR_MASK \
+            MASK (IX_ETHNPE_QM_Q_FIELD_PRIOR_L, \
+                  IX_ETHNPE_QM_Q_FIELD_PRIOR_R)
+
+#define IX_ETHNPE_QM_Q_TXENET_ADDR_MASK \
+            MASK (IX_ETHNPE_QM_Q_FIELD_ADDR_L, \
+                  IX_ETHNPE_QM_Q_FIELD_ADDR_R)
+
+#define IX_ETHNPE_QM_Q_TXENETDONE_NPEID_MASK \
+            MASK (IX_ETHNPE_QM_Q_FIELD_NPEID_L, \
+                  IX_ETHNPE_QM_Q_FIELD_NPEID_R)
+
+#define IX_ETHNPE_QM_Q_TXENETDONE_ADDR_MASK \
+            MASK (IX_ETHNPE_QM_Q_FIELD_ADDR_L, \
+                  IX_ETHNPE_QM_Q_FIELD_ADDR_R)
+
+
+#define IX_ETHNPE_QM_Q_FREEENET_ADDR_VAL(x) \
+            ((x) & IX_ETHNPE_QM_Q_FREEENET_ADDR_MASK)
+
+#define IX_ETHNPE_QM_Q_RXENET_NPEID_VAL(x) \
+            BITS (x, IX_ETHNPE_QM_Q_FIELD_NPEID_L, \
+                     IX_ETHNPE_QM_Q_FIELD_NPEID_R)
+
+#define IX_ETHNPE_QM_Q_RXENET_PORTID_VAL(x) \
+            BITS (x, IX_ETHNPE_QM_Q_FIELD_PORTID_L, \
+                     IX_ETHNPE_QM_Q_Field_PortID_R)
+
+#define IX_ETHNPE_QM_Q_RXENET_ADDR_VAL(x) \
+            ((x) & IX_ETHNPE_QM_Q_RXENET_ADDR_MASK)
+
+#define IX_ETHNPE_QM_Q_TXENET_PRIOR_VAL(x) \
+            BITS (x, IX_ETHNPE_QM_Q_FIELD_PRIOR_L, \
+                     IX_ETHNPE_QM_Q_FIELD_PRIOR_R)
+
+#define IX_ETHNPE_QM_Q_TXENET_ADDR_VAL(x) \
+            ((x) & IX_ETHNPE_QM_Q_TXENET_ADDR_MASK)
+
+#define IX_ETHNPE_QM_Q_TXENETDONE_NPEID_VAL(x) \
+            BITS (x, IX_ETHNPE_QM_Q_FIELD_NPEID_L, \
+                     IX_ETHNPE_QM_Q_FIELD_NPEID_R)
+
+#define IX_ETHNPE_QM_Q_TXENETDONE_ADDR_VAL(x) \
+            ((x) & IX_ETHNPE_QM_Q_TXENETDONE_ADDR_MASK)
+
+
+
+#define IX_ETHNPE_ACC_RXFREE_BUFFER_LENGTH_MIN (64)
+
+#define IX_ETHNPE_ACC_RXFREE_BUFFER_LENGTH_MASK (~63)
+
+#define IX_ETHNPE_ACC_RXFREE_BUFFER_ROUND_UP(size) (((size) + 63) & ~63)
+
+#define IX_ETHNPE_ACC_RXFREE_BUFFER_ROUND_DOWN(size) ((size) & ~63)
+
+#define IX_ETHNPE_ACC_FRAME_LENGTH_MAX (16320)
+
+#define IX_ETHNPE_ACC_FRAME_LENGTH_DEFAULT (1522)
+
+#define IX_ETHNPE_ACC_LENGTH_OFFSET 16
+
+#define IX_ETHNPE_ACC_PKTLENGTH_MASK 0x3fff
+
+
+
+#endif /* __doxygen_HIDE */

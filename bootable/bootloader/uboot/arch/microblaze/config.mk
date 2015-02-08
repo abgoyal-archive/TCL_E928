@@ -1,0 +1,5 @@
+CROSS_COMPILE ?= mb-
+
+STANDALONE_LOAD_ADDR = 0x80F00000
+
+PLATFORM_CPPFLAGS += -ffixed-r31 -D__microblaze__

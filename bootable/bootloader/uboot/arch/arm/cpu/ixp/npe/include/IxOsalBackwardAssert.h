@@ -1,0 +1,9 @@
+
+
+#ifndef IX_OSAL_BACKWARD_ASSERT_H
+#define IX_OSAL_BACKWARD_ASSERT_H
+
+#define IX_ENSURE(c, str)	IX_OSAL_ENSURE(c, str)
+#define IX_ASSERT(c)		IX_OSAL_ASSERT(c)
+
+#endif /* IX_OSAL_BACKWARD_ASSERT_H */

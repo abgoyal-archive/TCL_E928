@@ -1,0 +1,4 @@
+TEXT_BASE = 0xBFC00000
+
+# RAM version
+#TEXT_BASE = 0x80400000

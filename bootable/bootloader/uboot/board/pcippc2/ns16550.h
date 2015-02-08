@@ -1,0 +1,20 @@
+
+
+#ifndef _NS16550_H_
+#define _NS16550_H_
+
+#define NS16550_RBR	0x00
+#define NS16550_IER	0x01
+#define NS16550_FCR	0x02
+#define NS16550_LCR	0x03
+#define NS16550_MCR	0x04
+#define NS16550_LSR	0x05
+#define NS16550_MSR	0x06
+#define NS16550_SCR	0x07
+
+#define NS16550_THR	NS16550_RBR
+#define NS16550_IIR	NS16550_FCR
+#define NS16550_DLL	NS16550_RBR
+#define NS16550_DLM	NS16550_IER
+
+#endif

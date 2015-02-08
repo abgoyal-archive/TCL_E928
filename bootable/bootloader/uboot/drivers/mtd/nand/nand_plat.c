@@ -1,0 +1,40 @@
+
+
+
+#include <common.h>
+#include <asm/io.h>
+
+#include <nand.h>
+
+static void plat_cmd_ctrl(struct mtd_info *mtd, int cmd, unsigned int ctrl)
+{
+	struct nand_chip *this = mtd->priv;
+
+	if (cmd == NAND_CMD_NONE)
+		return;
+
+	if (ctrl & NAND_CLE)
+		NAND_PLAT_WRITE_CMD(this, cmd);
+	else
+		NAND_PLAT_WRITE_ADR(this, cmd);
+}
+
+#ifdef NAND_PLAT_DEV_READY
+static int plat_dev_ready(struct mtd_info *mtd)
+{
+	return NAND_PLAT_DEV_READY((struct nand_chip *)mtd->priv);
+}
+#else
+# define plat_dev_ready NULL
+#endif
+
+int board_nand_init(struct nand_chip *nand)
+{
+	NAND_PLAT_INIT();
+
+	nand->cmd_ctrl = plat_cmd_ctrl;
+	nand->dev_ready = plat_dev_ready;
+	nand->ecc.mode = NAND_ECC_SOFT;
+
+	return 0;
+}

@@ -1,0 +1,2 @@
+LDR_FLAGS-BFIN_BOOT_UART       := --port g --gpio 6
+LDR_FLAGS += $(LDR_FLAGS-$(CONFIG_BFIN_BOOT_MODE))

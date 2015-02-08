@@ -1,0 +1,3 @@
+PLATFORM_RELFLAGS +=
+
+PLATFORM_CPPFLAGS += -march=i386 -Werror

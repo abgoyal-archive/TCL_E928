@@ -1,0 +1,5 @@
+CROSS_COMPILE ?= nios-elf-
+
+STANDALONE_LOAD_ADDR = 0x00800000 -L $(gcclibdir)/m32
+
+PLATFORM_CPPFLAGS += -m32 -DCONFIG_NIOS -D__NIOS__ -ffixed-g7 -gstabs
